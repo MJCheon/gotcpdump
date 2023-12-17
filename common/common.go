@@ -144,6 +144,7 @@ func PrintDnsLayer(dns layers.DNS, srcIP string, srcPort string, dstIP string, d
 	}
 }
 
-func PrintTcpLayer(seq string) {
-	fmt.Println("    Seq Number ", seq)
+func PrintTcpLayer(seq uint32) {
+
+	fmt.Println("    Seq Number ", strconv.FormatUint(uint64(seq), 10))
 }
