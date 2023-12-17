@@ -123,6 +123,7 @@ func startCapturePacket(c *cli.Context) bool {
 	switch packetType {
 	case "tcp":
 		parser.AddDecodingLayer(&tcp)
+		parser.AddDecodingLayer(&payload)
 	case "udp":
 		parser.AddDecodingLayer(&udp)
 	case "dns":
@@ -189,7 +190,7 @@ func startCapturePacket(c *cli.Context) bool {
 					common.PrintSeperator()
 					common.PrintFlow(srcIP, srcPort, dstIP, dstPort)
 					common.PrintEtherLayer(nic, srcMac, dstMac)
-					common.PrintTcpLayer(tcp.seq)
+					common.PrintTcpLayer(tcp.Seq)
 				case layers.LayerTypeUDP:
 					srcPort = udp.SrcPort.String()
 					dstPort = udp.DstPort.String()
