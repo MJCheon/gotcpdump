@@ -150,7 +150,6 @@ func PrintTcpLayer(seq uint32) {
 }
 
 func PrintPayload(payload gopacket.Payload) {
-	// fmt.Println("Header : " + string(payload.LayerContents()))
-	// fmt.Println("Body : " + string(payload.LayerPayload()))
-	fmt.Println(string(payload.Payload()))
+	fmt.Println("Header : " + string(payload.LayerContents()))
+	fmt.Println("Body : " + string(payload.LayerPayload()))
 }
