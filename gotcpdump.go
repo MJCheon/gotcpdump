@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 
@@ -191,7 +192,11 @@ func startCapturePacket(c *cli.Context) bool {
 					common.PrintFlow(srcIP, srcPort, dstIP, dstPort)
 					common.PrintEtherLayer(nic, srcMac, dstMac)
 					common.PrintTcpLayer(tcp.Seq)
-					fmt.Println(string(packet.ApplicationLayer().Payload()))
+					var buf bytes.Buffer
+
+					buf.Write(payload)
+					fmt.Println(buf.String())
+
 				case layers.LayerTypeUDP:
 					srcPort = udp.SrcPort.String()
 					dstPort = udp.DstPort.String()
