@@ -6,6 +6,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 	"github.com/urfave/cli/v2"
 )
@@ -145,6 +146,11 @@ func PrintDnsLayer(dns layers.DNS, srcIP string, srcPort string, dstIP string, d
 }
 
 func PrintTcpLayer(seq uint32) {
-
 	fmt.Println("    Seq Number ", strconv.FormatUint(uint64(seq), 10))
+}
+
+func PrintPayload(payload gopacket.Payload) {
+	// fmt.Println("Header : " + string(payload.LayerContents()))
+	// fmt.Println("Body : " + string(payload.LayerPayload()))
+	fmt.Println(payload.GoString())
 }

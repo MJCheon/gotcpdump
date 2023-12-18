@@ -191,8 +191,7 @@ func startCapturePacket(c *cli.Context) bool {
 					common.PrintFlow(srcIP, srcPort, dstIP, dstPort)
 					common.PrintEtherLayer(nic, srcMac, dstMac)
 					common.PrintTcpLayer(tcp.Seq)
-
-					fmt.Println(string(tcp.Payload))
+					common.PrintPayload(payload)
 				case layers.LayerTypeUDP:
 					srcPort = udp.SrcPort.String()
 					dstPort = udp.DstPort.String()
